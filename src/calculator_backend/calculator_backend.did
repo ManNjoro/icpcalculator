@@ -1,3 +1,10 @@
-service : {
-    "greet": (text) -> (text) query;
-}
+type CalculatorOperation = variant { Add; Mod; Multiply; Subtract; Divide };
+type CalculatorPayload = record {
+  num1 : float64;
+  num2 : float64;
+  operation : CalculatorOperation;
+};
+type CalculatorResult = record { result : float64 };
+type Error = variant { DivisionByZero; NotFound : record { msg : text } };
+type Result = variant { Ok : CalculatorResult; Err : Error };
+service : { calculate : (CalculatorPayload) -> (Result) query }

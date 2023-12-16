@@ -1,6 +1,7 @@
 # calculator
 
-Welcome to your new calculator project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+This is a basic math calculator with operations such as add, subtract, divide, multiply
+and modulus
 
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
@@ -13,9 +14,32 @@ To learn more before you start working with calculator, see the following docume
 - [ic-cdk-macros](https://docs.rs/ic-cdk-macros)
 - [Candid Introduction](https://internetcomputer.org/docs/current/developer-docs/backend/candid/)
 
+### Requirements
+* rustc 1.64 or higher
+```bash
+$ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+$ source "$HOME/.cargo/env"
+```
+* rust wasm32-unknown-unknown target
+```bash
+$ rustup target add wasm32-unknown-unknown
+```
+* candid-extractor
+```bash
+$ cargo install candid-extractor
+```
+* install `dfx`
+```bash
+$ DFX_VERSION=0.15.0 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+$ echo 'export PATH="$PATH:$HOME/bin"' >> "$HOME/.bashrc"
+$ source ~/.bashrc
+$ dfx start --background
+```
+
 If you want to start working on your project right away, you might want to try the following commands:
 
 ```bash
+git clone https://github.com/ManNjoro/calculator.git
 cd calculator/
 dfx help
 dfx canister --help
