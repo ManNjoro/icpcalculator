@@ -53,6 +53,7 @@ enum CalculatorOperation {
     Multiply,
     Divide,
     Mod,
+    Power,
 }
 
 // Default trait for CalculatorOperation
@@ -77,6 +78,7 @@ fn calculate(payload: CalculatorPayload) -> Result<CalculatorResult, Error> {
         CalculatorOperation::Multiply => multiply(payload.num1, payload.num2),
         CalculatorOperation::Divide => divide(payload.num1, payload.num2)?,
         CalculatorOperation::Mod => modulus(payload.num1, payload.num2),
+        CalculatorOperation::Power => power(payload.num1, payload.num2),
     };
 
     Ok(CalculatorResult { result })
@@ -104,6 +106,10 @@ fn divide(num1: f64, num2: f64) -> Result<f64, Error> {
 
 fn modulus(num1: f64, num2: f64) -> f64 {
     num1 % num2
+}
+
+fn power(base: f64, exponent: f64) -> f64 {
+    base.powf(exponent)
 }
 
 #[derive(candid::CandidType, Deserialize, Serialize)]
